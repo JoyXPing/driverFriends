@@ -50,7 +50,7 @@ import qs from "qs"
                     axios.post('/user/login', qs.stringify(params))
                         .then(res => {
                             if(res.data.code === 0) {
-                                // this.$router.push("");
+                                this.$router.push("/main/"+ res.data.data.role);
                                 this.$message({
                                     showClose: true,
                                     message: '登录成功',

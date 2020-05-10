@@ -7,6 +7,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Login',
+    redirect: '/user/login',
     component: () => import("@/views/login/index.vue"),
     children: [
       {
@@ -16,6 +17,25 @@ Vue.use(VueRouter)
       {
         path: "/register",
         component: () => import("@/components/login/TheRegister.vue")
+      }
+    ]
+  },
+  {
+    path: '/main',
+    name: 'Main',
+    component: () => import("@/views/main/index.vue"),
+    children: [
+      {
+        path: "/boss",
+        component: () => import("@/components/main/TheBoss.vue")
+      },
+      {
+        path: "/buyer",
+        component: () => import("@/components/main/TheBuyer.vue")
+      },
+      {
+        path: "/driver",
+        component: () => import("@/components/main/TheDriver.vue")
       }
     ]
   }
