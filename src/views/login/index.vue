@@ -1,17 +1,16 @@
 <template>
-    <div class="login">
-        <el-menu 
-            :default-active="activeIndex" 
-            class="el-menu-demo" 
-            mode="horizontal" 
-            @select="handleSelect"
-        >
-            <el-menu-item index="1">登录</el-menu-item>
-            <el-menu-item index="2">注册</el-menu-item>
-        </el-menu>
-        <div class="login-info">
-            <router-view></router-view>
+    <div>
+        <div class="title">友货平台系统</div>
+        <div class="login">
+            <van-tabs @click="checkActive">
+                <van-tab title="登录" name="1"></van-tab>
+                <van-tab title="注册" name="2"></van-tab>
+            </van-tabs>
+            <div class="login-info">
+                <router-view></router-view>
+            </div>
         </div>
+        
     </div>
 </template>
 
@@ -19,32 +18,32 @@
     export default {
         data() {
             return {
-                activeIndex: '1'
+                active: '1'
             };
         },
-        created() {
-            if(this.$route.path === '/register') {
-                this.activeIndex = '2'
-            }
-        },
+        // created() {
+        //     if(this.$route.path === '/register') {
+        //         this.active = '2'
+        //     }
+        // },
         watch:{
             $route(to,from){
                 if(to.path === from.path){
                     return
                 }else
                 if(from.path === '/register') {
-                    this.activeIndex = '1'
+                    this.active = '1'
                 }
             }
 
         },
         methods: {
-            handleSelect(key) {
-                if(this.activeIndex === key){
+            checkActive(name){
+                if(this.active === name){
                     return
                 }else {
-                    this.activeIndex = key;
-                    if(this.activeIndex === '1'){
+                    this.active = name;
+                    if(this.active === '1'){
                         this.loginIn()
                     }else {
                         this.regist()
@@ -62,21 +61,23 @@
 </script>
 
 <style scoped>
+.title {
+  /* padding-top: 50px; */
+  height: 3em;
+  line-height: 3em;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
 .login {
-    width: 30%;
-    /* height: 500px; */
-    margin: 7% auto;
+    width: 80%;
+    margin: 5em auto;
+    padding: 0.5em;
     background-color: #fff;
-    padding: 10px;
+    border-radius: 0.5em;
+    box-shadow: 0.3em 0.3em 0.5em #eee;
 }
-span {
-    height: 100%;
-}
-.el-menu-item {
-    width: 50%;
-}
-.login-info {
-    margin: 20px;
-    margin-top: 10%;
+.login-info{
+    padding: 1.5em 0;
+    
 }
 </style>

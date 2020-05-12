@@ -12,13 +12,18 @@ Vue.use(VueRouter)
     children: [
       {
         path: "/user/login",
-        component: () => import("@/components/login/TheLogin.vue")
+        component: () => import("@/components/login/UserLogin.vue")
       },
       {
         path: "/register",
         component: () => import("@/components/login/TheRegister.vue")
       }
     ]
+  },
+  {
+    path: '/admin/login',
+    name: 'Admin',
+    component: () => import("@/components/login/AdminLogin.vue"),
   },
   {
     path: '/main',

@@ -1,21 +1,27 @@
 <template>
     <div class="the-login">
-        <el-form 
-            status-icon 
-            :rules="rules"  
-            ref="form" 
-            :model="form" 
-            label-width="90px" 
-            label-position="left"
-        >
-            <el-form-item label="手机号码:" prop="mobile">
-                <el-input v-model="form.mobile"></el-input>
-            </el-form-item>
-            <el-form-item label="密码:" prop="password">
-                <el-input v-model="form.password" type="password"></el-input>
-            </el-form-item>
-            <el-button type="primary" @click="onSubmit('form')">登陆</el-button>
-        </el-form>
+        <van-form @submit="onSubmit">
+            <van-field
+                v-model="mobile"
+                name="手机号码"
+                label="手机号码"
+                placeholder="手机号码"
+                :rules="[{ required: true, message: '请填写手机号码' }]"
+            />
+            <van-field
+                v-model="password"
+                type="password"
+                name="密码"
+                label="密码"
+                placeholder="密码"
+                :rules="[{ required: true, message: '请填写密码' }]"
+            />
+            <div style="margin: 16px;">
+                <van-button round block type="info" native-type="submit">
+                登录
+                </van-button>
+            </div>
+        </van-form>
     </div>
 </template>
 
@@ -25,18 +31,8 @@ import qs from "qs"
     export default {
         data() {
             return {
-                form: {
-                    mobile: '',
-                    password: ''
-                },
-                rules: {
-                    mobile: [
-                        { required: true, message: '请输入手机号码', trigger: 'blur' }
-                    ],
-                    password: [
-                        { required: true, message: '请输入密码', trigger: 'blur' }
-                    ]
-                }
+                mobile: '',
+                password: ''
             }
         },
         methods: {
@@ -70,13 +66,13 @@ import qs from "qs"
                     }
                 });
             },
+            adminLogin() {
+                this.$router.push('/admin/login')
+            }
         }
     }
 </script>
 
 <style scoped>
-.el-button {
-    width: 70%;
-    margin-top: 5%;
-}
+
 </style>
