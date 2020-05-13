@@ -11,11 +11,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
-  /* background-color: red;
-  height: 100vh; */
   background: url(assets/bg.png) no-repeat;
   background-size:100%;
-  height: 130vh ;
+  height: 100vh ;
   padding: 20px;
 }
 </style>

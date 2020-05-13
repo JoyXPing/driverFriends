@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div class="title">友货平台系统</div>
         <div class="admin-login">
             <el-menu mode="horizontal">
                 <el-menu-item>登录</el-menu-item>
@@ -59,13 +58,13 @@ import qs from "qs"
                     axios.post('/admin/login', qs.stringify(params))
                         .then(res => {
                             if(res.data.code === 0) {
-                                this.$router.push("/main/"+ res.data.data.role);
+                                this.$router.push("/admin/main");
                                 this.$message({
                                     showClose: true,
                                     message: '登录成功',
                                     type: 'success'
                                 });
-                                sessionStorage.setItem("userToken", res.data.data.token)
+                                localStorage.setItem("userToken", res.data.data.token)
                             }else {
                                 this.$message({
                                     showClose: true,
@@ -88,16 +87,8 @@ import qs from "qs"
 </script>
 
 <style scoped>
-.title {
-  padding-top: 50px;
-  height: 100px;
-  line-height: 100px;
-  font-size: 40px;
-  font-weight: 800;
-}
 .admin-login {
     width: 30%;
-    /* height: 500px; */
     margin: 7% auto;
     background-color: #fff;
     padding: 10px;
