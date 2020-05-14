@@ -23,13 +23,6 @@
                 placeholder="密码"
                 :rules="[{ required: true, message: '请填写密码' }]"
             />
-            <!-- <van-field
-                v-model="role"
-                name="role"
-                label="用户身份"
-                placeholder="用户身份"
-                :rules="[{ required: true, message: '请填写用户身份' }]"
-            /> -->
             <van-field
                 readonly
                 clickable
