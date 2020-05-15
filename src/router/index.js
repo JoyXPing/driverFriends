@@ -15,15 +15,43 @@ Vue.use(VueRouter)
         component: () => import("@/components/login/UserLogin.vue")
       },
       {
-        path: "/register",
+        path: "/user/register",
         component: () => import("@/components/login/TheRegister.vue")
       }
     ]
   },
   {
-    path: '/admin/login',
+    path: '/admin',
     name: 'Admin',
-    component: () => import("@/components/login/AdminLogin.vue"),
+    component: () => import("@/views/admin/index.vue"),
+    children: [
+      {
+        path: "/admin/login",
+        component: () => import("@/components/login/AdminLogin.vue")
+      },
+      {
+        path: "/admin/main",
+        component: () => import("@/components/main/TheAdmin.vue"),
+        children: [
+          {
+            path: "/admin/main/userlist",
+            component: () => import("@/components/admin/UserList.vue")
+          },
+          {
+            path: "/admin/main/companylist",
+            component: () => import("@/components/admin/companyList.vue")
+          },
+          {
+            path: "/admin/main/trucklist",
+            component: () => import("@/components/admin/TruckList.vue")
+          },
+          {
+            path: "/admin/main/tasklist",
+            component: () => import("@/components/admin/TaskList.vue")
+          }
+        ]
+      }
+    ]
   },
   {
     path: '/main',
@@ -31,15 +59,15 @@ Vue.use(VueRouter)
     component: () => import("@/views/main/index.vue"),
     children: [
       {
-        path: "/boss",
+        path: "/main/boss",
         component: () => import("@/components/main/TheBoss.vue")
       },
       {
-        path: "/buyer",
+        path: "/main/buyer",
         component: () => import("@/components/main/TheBuyer.vue")
       },
       {
-        path: "/driver",
+        path: "/main/driver",
         component: () => import("@/components/main/TheDriver.vue")
       }
     ]

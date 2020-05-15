@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div class="title">友货平台系统</div>
         <div class="login">
             <van-tabs @click="checkActive">
                 <van-tab title="登录" name="1"></van-tab>
@@ -21,11 +20,6 @@
                 active: '1'
             };
         },
-        // created() {
-        //     if(this.$route.path === '/register') {
-        //         this.active = '2'
-        //     }
-        // },
         watch:{
             $route(to,from){
                 if(to.path === from.path){
@@ -35,7 +29,6 @@
                     this.active = '1'
                 }
             }
-
         },
         methods: {
             checkActive(name){
@@ -61,13 +54,6 @@
 </script>
 
 <style scoped>
-.title {
-  /* padding-top: 50px; */
-  height: 3em;
-  line-height: 3em;
-  font-size: 1.5rem;
-  font-weight: 800;
-}
 .login {
     width: 80%;
     margin: 5em auto;

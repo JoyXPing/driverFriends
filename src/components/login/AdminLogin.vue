@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div class="title">友货平台系统</div>
         <div class="admin-login">
             <el-menu mode="horizontal">
                 <el-menu-item>登录</el-menu-item>
@@ -21,7 +20,7 @@
                         <el-input v-model="form.password" type="password"></el-input>
                     </el-form-item>
                     <el-button class="loginIn" type="primary" @click="onSubmit('form')">管理员登陆</el-button>
-                    <el-button class="loginIn" @click="cancel">取消</el-button>
+                    <!-- <el-button class="loginIn" @click="cancel">取消</el-button> -->
                 </el-form>
             </div>
         </div>
@@ -62,7 +61,7 @@ import { setToken, setLocalStorage } from "@/utils/index.js";
                             if(res.data.code === 0) {
                                 setToken("Token", res.data.data.token);
                                 setLocalStorage("mobileAndPassword", JSON.stringify(params));
-                                this.$router.push("/main/"+ res.data.data.role);
+                                this.$router.push("/admin/main/userlist");
                                 this.$message({
                                     showClose: true,
                                     message: '登录成功',
@@ -81,25 +80,17 @@ import { setToken, setLocalStorage } from "@/utils/index.js";
                         return false;
                     }
                 });
-            },
-            cancel() {
-                this.$router.push('/user/login')
             }
+            // cancel() {
+            //     this.$router.push('/user/login')
+            // }
         }
     }
 </script>
 
 <style scoped>
-.title {
-  padding-top: 50px;
-  height: 100px;
-  line-height: 100px;
-  font-size: 40px;
-  font-weight: 800;
-}
 .admin-login {
     width: 30%;
-    /* height: 500px; */
     margin: 7% auto;
     background-color: #fff;
     padding: 10px;
