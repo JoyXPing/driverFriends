@@ -20,7 +20,7 @@
                         <el-input v-model="form.password" type="password"></el-input>
                     </el-form-item>
                     <el-button class="loginIn" type="primary" @click="onSubmit('form')">管理员登陆</el-button>
-                    <!-- <el-button class="loginIn" @click="cancel">取消</el-button> -->
+                    <el-button class="loginIn" @click="cancel">取消</el-button>
                 </el-form>
             </div>
         </div>
@@ -30,7 +30,6 @@
 <script>
 import axios from "axios";
 import qs from "qs"
-import { setToken, setLocalStorage } from "@/utils/index.js";
     export default {
         data() {
             return {
@@ -59,14 +58,13 @@ import { setToken, setLocalStorage } from "@/utils/index.js";
                     axios.post('/admin/login', qs.stringify(params))
                         .then(res => {
                             if(res.data.code === 0) {
-                                setToken("Token", res.data.data.token);
-                                setLocalStorage("mobileAndPassword", JSON.stringify(params));
-                                this.$router.push("/admin/main/userlist");
+                                this.$router.push("/admin/main");
                                 this.$message({
                                     showClose: true,
                                     message: '登录成功',
                                     type: 'success'
                                 });
+                                localStorage.setItem("userToken", res.data.data.token)
                             }else {
                                 this.$message({
                                     showClose: true,
@@ -80,10 +78,10 @@ import { setToken, setLocalStorage } from "@/utils/index.js";
                         return false;
                     }
                 });
+            },
+            cancel() {
+                this.$router.push('/user/login')
             }
-            // cancel() {
-            //     this.$router.push('/user/login')
-            // }
         }
     }
 </script>
