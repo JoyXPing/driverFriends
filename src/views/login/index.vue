@@ -24,8 +24,7 @@
             $route(to,from){
                 if(to.path === from.path){
                     return
-                }else
-                if(from.path === '/register') {
+                }else if(from.path === '/register') {
                     this.active = '1'
                 }
             }

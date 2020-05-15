@@ -53,7 +53,7 @@
 </template>
 
 <script>
-   import axios from "axios";
+import axios from "axios";
 import Qs from "qs";
 import { getToken } from "@/utils/index.js";
 export default {

@@ -59,15 +59,37 @@ Vue.use(VueRouter)
     component: () => import("@/views/main/index.vue"),
     children: [
       {
-        path: "/main/boss",
-        component: () => import("@/components/main/TheBoss.vue")
+        path: "/main/Boss",
+        component: () => import("@/components/main/TheBoss.vue"),
+        children: [
+          {
+            path: "/main/Boss/addCompany",
+            component: () => import("@/components/boss/AddCompany.vue")
+          },
+          {
+            path: "/main/Boss/Home",
+            component: () => import("@/components/boss/BossHome.vue")
+          },
+          {
+            path: "/main/Boss/Task",
+            component: () => import("@/components/boss/BossTask.vue")
+          },
+          {
+            path: "/main/Boss/Goods",
+            component: () => import("@/components/boss/BossGoods.vue")
+          },
+          {
+            path: "/main/Boss/Center",
+            component: () => import("@/components/boss/BossCenter.vue")
+          }
+        ]
       },
       {
-        path: "/main/buyer",
+        path: "/main/Buyer",
         component: () => import("@/components/main/TheBuyer.vue")
       },
       {
-        path: "/main/driver",
+        path: "/main/Driver",
         component: () => import("@/components/main/TheDriver.vue")
       }
     ]

@@ -61,7 +61,7 @@ import { setToken, setLocalStorage } from "@/utils/index.js";
                             if(res.data.code === 0) {
                                 setToken("Token", res.data.data.token);
                                 setLocalStorage("mobileAndPassword", JSON.stringify(params));
-                                 this.$router.push("/admin/main/userlist");
+                                this.$router.push("/admin/main/userlist");
                                 this.$message({
                                     showClose: true,
                                     message: '登录成功',

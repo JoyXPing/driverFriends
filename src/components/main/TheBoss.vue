@@ -1,11 +1,14 @@
 <template>
     <div>
-        <cube-tab-bar
-            v-model="selectedLabelDefault"
-            :data="tabs"
-            @click="clickHandler"
-            @change="changeHandler">
-        </cube-tab-bar>
+       <van-tabbar v-model="active"  @change="onChange">
+        <van-tabbar-item  replace to="/main/Boss/Home" icon="home-o">主页</van-tabbar-item>
+        <van-tabbar-item  replace to="/main/Boss/Task" icon="orders-o">任务</van-tabbar-item>
+        <van-tabbar-item  replace to="/main/Boss/Goods" icon="goods-collect-o">商品</van-tabbar-item>
+        <van-tabbar-item  replace to="/main/Boss/Center" icon="user-o">个人中心</van-tabbar-item>
+      </van-tabbar>
+      <div>
+        <router-view/>
+      </div>
     </div>
 </template>
 
@@ -13,30 +16,13 @@
     export default {
   data () {
     return {
-      selectedLabelDefault: 'Vip',
-      tabs: [{
-        label: 'Home',
-        icon: 'cubeic-home'
-      }, {
-        label: 'Like',
-        icon: 'cubeic-like'
-      }, {
-        label: 'Vip',
-        icon: 'cubeic-vip'
-      }, {
-        label: 'Me',
-        icon: 'cubeic-person'
-      }]
+      active: 0,
     }
   },
   methods: {
-    clickHandler (label) {
-      // if you clicked home tab, then print 'Home'
-      console.log(label)
+     onChange(index) {
+      console.log({ type: 'primary', message: index });
     },
-    changeHandler () {
-      // if you clicked different tab, this methods can be emitted
-    }
   }
 }
 </script>

@@ -13,7 +13,10 @@
                 name="mobile"
                 label="手机号码"
                 placeholder="手机号码"
-                :rules="[{ required: true, message: '请填写手机号码' }]"
+                :rules="[
+                    { required: true, message: '请填写手机号码' },
+                    { pattern: /^1[3456789]\d{9}$/, message: '请填写11位合法手机号码' }
+                ]"
             />
             <van-field
                 v-model="password"
