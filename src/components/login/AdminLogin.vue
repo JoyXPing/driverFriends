@@ -30,6 +30,7 @@
 <script>
 import axios from "axios";
 import qs from "qs"
+import { setToken, setLocalStorage } from "@/utils/index.js";
     export default {
         data() {
             return {
@@ -58,13 +59,14 @@ import qs from "qs"
                     axios.post('/admin/login', qs.stringify(params))
                         .then(res => {
                             if(res.data.code === 0) {
-                                this.$router.push("/admin/main");
+                                setToken("Token", res.data.data.token);
+                                setLocalStorage("mobileAndPassword", JSON.stringify(params));
+                                 this.$router.push("/admin/main/userlist");
                                 this.$message({
                                     showClose: true,
                                     message: '登录成功',
                                     type: 'success'
                                 });
-                                localStorage.setItem("userToken", res.data.data.token)
                             }else {
                                 this.$message({
                                     showClose: true,

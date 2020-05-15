@@ -1,5 +1,6 @@
 <template>
     <div class="the-login">
+        <div class="title">友货平台系统</div>
         <van-form @submit="onSubmit">
             <van-field
                 v-model="mobile"

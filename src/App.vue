@@ -12,6 +12,7 @@
   text-align: center;
   color: #fff;
   background: url(assets/bg.png) no-repeat;
+  /* background-color: rgb(238, 238, 238); */
   background-size:100%;
   height: 100vh ;
   padding: 0 20px;

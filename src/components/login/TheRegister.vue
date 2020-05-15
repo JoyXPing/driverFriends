@@ -31,6 +31,7 @@
                 label="用户身份"
                 placeholder="点击选择身份"
                 @click="showPicker = true"
+                :rules="[{ required: true, message: '请选择身份' }]"
             />
             <van-popup v-model="showPicker" position="bottom">
                 <van-picker

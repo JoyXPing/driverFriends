@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="title">友货平台系统</div>
         <div class="login">
             <van-tabs @click="checkActive">
                 <van-tab title="登录" name="1"></van-tab>
@@ -9,7 +10,6 @@
                 <router-view></router-view>
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -54,12 +54,18 @@
 </script>
 
 <style scoped>
+.title {
+  height: 100px;
+  line-height: 100px;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
 .login {
     width: 80%;
-    margin: 5em auto;
+    margin: 2em auto;
     padding: 0.5em;
     background-color: #fff;
-    border-radius: 0.5em;
+    border-radius: 1em;
     box-shadow: 0.3em 0.3em 0.5em #eee;
 }
 .login-info{
