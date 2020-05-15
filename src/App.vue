@@ -14,6 +14,6 @@
   background: url(assets/bg.png) no-repeat;
   background-size:100%;
   height: 100vh ;
-  padding: 20px;
+  padding: 0 20px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-table class="table-content" :data="userList" border stripe height="450" style="width: 100%">
+        <el-table class="table-content" :data="userList" border stripe height="550" style="width: 100%">
             <el-table-column prop="userName" label="姓名" width="180">
             </el-table-column>
             <el-table-column
@@ -8,7 +8,7 @@
                 label="部门"
                 width="180"
             ></el-table-column>
-            <el-table-column prop="userMobile" label="电话" width="230"> </el-table-column>
+            <el-table-column prop="userMobile" label="电话" width="250"> </el-table-column>
             <el-table-column prop="userState" label="当前状态" width="200" :formatter="stateName">
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="180">
@@ -31,7 +31,6 @@
                 >
                     拒绝
                 </el-button>
-                <!-- <div v-else-if="scope.row.docState === 'On'"> -->
                 <el-button
                     @click="handleDel(scope.$index, scope.row)"
                     size="mini"
@@ -48,7 +47,6 @@
                 >
                     封号
                 </el-button>
-                <!-- </div> -->
                 </template>
             </el-table-column>
         </el-table>
@@ -72,7 +70,6 @@ export default {
         headers: { Token: getToken("Token") }
     }).then(function(response) {
         _self.userList = response.data.data;
-        console.log(_self.userList);
       })
       .catch(function(error) {
         console.log(error);
@@ -123,9 +120,20 @@ export default {
       this.changeState(row, row.userState);
     },
     handleDel(index, row) {
-      row.userState = "Del";
-      this.changeState(row, row.userState);
-      this.userList.splice(index, 1);
+      this.$confirm('此操作将删除该条数据, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+					row.userState = "Del";
+          this.changeState(row, row.userState);
+          this.userList.splice(index, 1);
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
     },
     handleOff(row) {
       row.userState = "Off";
