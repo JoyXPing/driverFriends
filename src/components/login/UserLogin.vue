@@ -48,7 +48,6 @@ import { setToken, getToken, setLocalStorage } from "@/utils/index.js";
                         if(res.data.code === 0) {
                             setToken("Token", res.data.data.token);
                             setLocalStorage("mobileAndPassword", JSON.stringify(params));
-                            // this.$router.push("/main/"+ res.data.data.role + "/Home");
                             if(res.data.data.role === 'Boss') {
                                 this.ishavecompany()
                             }else {
@@ -72,7 +71,6 @@ import { setToken, getToken, setLocalStorage } from "@/utils/index.js";
                 axios.post('/company/ishave',qs.stringify(),{
                     headers: { Token: getToken("Token") }
                 }).then(res => {
-                    console.log(res.data.data)
                     if(res.data.data === false) {
                         this.$router.push("/main/Boss/addCompany");
                     }else {

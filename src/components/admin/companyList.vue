@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="list">
         <el-table class="table-content" :data="companyList" border stripe height="550" style="width: 100%">
             <el-table-column fixed prop="companyName" label="公司名称" width="180">
             </el-table-column>
@@ -44,7 +44,7 @@
                     type="warning"
                     v-if="scope.row.companyState == 'On'"
                 >
-                    封号
+                    禁用
                 </el-button>
                 </template>
             </el-table-column>
@@ -81,7 +81,7 @@ export default {
       } else if (row.companyState == "Unaudited") {
         return "未审核";
       } else if (row.companyState == "Off") {
-        return "已封号";
+        return "已禁用";
       } else if (row.companyState == "Del") {
         return "已删除";
       }
@@ -144,7 +144,11 @@ export default {
 </script>
 
 <style scoped>
+.list {
+  height: 83vh;
+} 
 .table-content {
     border-radius: 0 10px 10px 0;
+    height: 100%;
 }
 </style>

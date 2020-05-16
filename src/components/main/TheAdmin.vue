@@ -59,7 +59,7 @@
 .el-menu-vertical-demo {
   padding: 5px;
   border-radius: 10px 0 0 10px;
-  height: 540px;
+  height: 81.4vh;
 }
 .admin-right {
   width: 80%;

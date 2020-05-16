@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-table class="table-content" :data="userList" border stripe height="550" style="width: 100%">
+    <div class="list">
+        <el-table class="table-content" :data="userList" border stripe style="width: 100%">
             <el-table-column prop="userName" label="姓名" width="180">
             </el-table-column>
             <el-table-column
@@ -144,8 +144,11 @@ export default {
 </script>
 
 <style scoped>
+.list {
+  height: 83vh;
+} 
 .table-content {
-    padding-left: 10px;
     border-radius: 0 10px 10px 0;
+    height: 100%;
 }
 </style>

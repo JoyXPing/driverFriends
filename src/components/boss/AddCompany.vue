@@ -23,7 +23,7 @@
                             clickable
                             label="城市"
                             placeholder="选择城市"
-                            :value="value"
+                            :value="companycity"
                             :rules="[{ required: true, message: '请选择城市' }]"
                             @click="showPicker = true"
                         />
@@ -55,14 +55,17 @@
 </template>
 
 <script>
+import axios from "axios";
+import qs from "qs"
+import { getToken } from "@/utils/index.js";
 import adress from '@/utils/areaList.js'
     export default {
         data() {
             return {
                 show: true,
-                value: '',
                 showPicker: false,
                 areaList: adress,
+                companycity: '',
                 companyname: '',
                 companymobile: '',
                 companyaddress: ''
@@ -70,11 +73,24 @@ import adress from '@/utils/areaList.js'
         },
         methods: {
             onConfirm(value) {
-                this.value = value[0].name + '-' +value[1].name;
+                this.companycity = value[1].name + '-' + value[0].name;
                 this.showPicker = false;
             },
             onSubmit() {
-
+                let params = {
+                    companyName: this.companyname,
+                    companyMobile: this.companymobile,
+                    companyCity: this.companycity,
+                    companyAddress: this.companyaddress,
+                    companyLogo: 'logo'
+                }
+                axios.post('/company/add',qs.stringify(params),{
+                    headers: { Token: getToken("Token") }
+                }).then(res => {
+                    if(res.data.code === 0) {
+                        this.$router.push('/main/Boss/Home')
+                    }
+                })
             }
         },
     }

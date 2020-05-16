@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="list">
         <el-table class="table-content" :data="taskList" border stripe height="550" style="width: 100%">
             <el-table-column fixed prop="cargoKind" label="货物种类" width="200">
             </el-table-column>
@@ -150,7 +150,11 @@ export default {
 </script>
 
 <style scoped>
+.list {
+  height: 83vh;
+} 
 .table-content {
     border-radius: 0 10px 10px 0;
+    height: 100%;
 }
 </style>
