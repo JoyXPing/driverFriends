@@ -133,9 +133,6 @@ import { Notify } from 'vant';
     /* display: flex; */
     margin: 1rem;
 }
-.change-btn van-button {
-
-}
 .i-btn-l {
     width: 6rem;
     border-radius: 2rem 0 0 2rem;
