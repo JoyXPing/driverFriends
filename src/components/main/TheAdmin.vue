@@ -21,6 +21,10 @@
               <i class="el-icon-s-order"></i>
               <span slot="title">任务管理</span>
           </el-menu-item>
+          <el-menu-item index="5">
+              <i class="el-icon-goods"></i>
+              <span slot="title">商品管理</span>
+          </el-menu-item>
         </el-menu>
       </div>
       <div class="admin-right">
@@ -42,6 +46,8 @@
           this.$router.push("/admin/main/trucklist");
         }else if (this.$route.path != "/admin/main/tasklist" && key == 4) {
           this.$router.push("/admin/main/tasklist");
+        }else if (this.$route.path != "/admin/main/goodslist" && key == 5){
+          this.$router.push("/admin/main/goodslist");
         }
       }
     }

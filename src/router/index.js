@@ -48,6 +48,10 @@ Vue.use(VueRouter)
           {
             path: "/admin/main/tasklist",
             component: () => import("@/components/admin/TaskList.vue")
+          },
+          {
+            path: "/admin/main/goodslist",
+            component: () => import("@/components/admin/GoodsList.vue")
           }
         ]
       }
