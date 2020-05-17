@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <el-table class="table-content" :data="goodsList" border stripe height="550" style="width: 100%">
+        <el-table class="table-content" :data="goodsList" border stripe height="100%" style="width: 100%">
             <el-table-column prop="goodsName" label="商品名" width="200">
             </el-table-column>
             <el-table-column prop="bossLocation" label="所在城市" width="200">
