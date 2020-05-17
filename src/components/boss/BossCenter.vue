@@ -37,10 +37,10 @@
                     :rules="[{ required: true, message: '请重新输入密码' }]"
                 />
                 <div class="change-btn">
-                    <van-button plain type="primary" class="i-btn-l" @click="editTask">
+                    <van-button plain type="primary" class="i-btn-l">
                         提交
                     </van-button>
-                    <van-button plain type="info" class="i-btn-r" @click="changeState" :disabled="ischange">
+                    <van-button plain type="info" class="i-btn-r" @click="cancel">
                         取消
                     </van-button>
                 </div>
@@ -104,6 +104,9 @@ import { Notify } from 'vant';
                         Notify({ type: 'danger', message: res.data.msg });
                     }
                 })
+            },
+            cancel() {
+                this.ischange = false
             }
         }
     }
