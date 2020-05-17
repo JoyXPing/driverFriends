@@ -1,6 +1,7 @@
 <template>
     <div>
         <get-task-list />
+        <router-view />
     </div>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="title">友货平台系统</div>
-        <router-view/>
+        <div class="content">
+            <router-view/>
+        </div>
     </div>
 </template>
 
@@ -17,5 +19,8 @@
   line-height: 100px;
   font-size: 40px;
   font-weight: 800;
+}
+.content {
+    padding: 0 20px;
 }
 </style>

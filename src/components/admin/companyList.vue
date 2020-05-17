@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <el-table class="table-content" :data="companyList" border stripe height="550" style="width: 100%">
+        <el-table class="table-content" :data="companyList" border stripe height="100%" style="width: 100%">
             <el-table-column fixed prop="companyName" label="公司名称" width="180">
             </el-table-column>
             <el-table-column prop="companyBossName" label="老板姓名" width="180">

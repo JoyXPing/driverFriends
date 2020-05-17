@@ -72,7 +72,13 @@ Vue.use(VueRouter)
           },
           {
             path: "/main/Boss/Task",
-            component: () => import("@/components/boss/BossTask.vue")
+            component: () => import("@/components/boss/BossTask.vue"),
+            children: [
+              {
+                path: "/main/Boss/Task/addTask",
+                component: () => import("@/components/boss/task/addTask.vue"),
+              }
+            ]
           },
           {
             path: "/main/Boss/Goods",

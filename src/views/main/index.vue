@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="title">友货平台系统</div>
-        <router-view/>
+        <van-nav-bar title="友货平台系统" />
+        <div class="content">
+            <router-view/>
+        </div>
     </div>
 </template>
 
@@ -12,10 +14,23 @@
 </script>
 
 <style scoped>
-.title {
-  height: 100px;
-  line-height: 100px;
-  font-size: 1.8rem;
-  font-weight: 800;
+.content {
+    margin: 6rem 1rem;
+}
+</style>
+<style>
+.van-nav-bar {
+    background-color: rgba(0,0,0,0); 
+}
+.van-nav-bar .van-icon {
+    color: #fff;
+}
+.van-nav-bar__text {
+    color: #fff;
+}
+.van-nav-bar__title {
+    font-weight: 800;
+    color: #fff;
+    font-size: 18px;
 }
 </style>

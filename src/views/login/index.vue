@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="title">友货平台系统</div>
+        <van-nav-bar title="友货平台系统"/>
         <div class="login">
             <van-tabs @click="checkActive">
                 <van-tab title="登录" name="1"></van-tab>
@@ -53,15 +53,9 @@
 </script>
 
 <style scoped>
-.title {
-  height: 100px;
-  line-height: 100px;
-  font-size: 1.8rem;
-  font-weight: 800;
-}
 .login {
-    width: 80%;
-    margin: 2em auto;
+    width: 75%;
+    margin: 9em auto;
     padding: 0.5em;
     background-color: #fff;
     border-radius: 1em;
@@ -70,5 +64,21 @@
 .login-info{
     padding: 1.5em 0;
     
+}
+</style>
+<style>
+.van-nav-bar {
+    background-color: rgba(0,0,0,0); 
+}
+.van-nav-bar .van-icon {
+    color: #fff;
+}
+.van-nav-bar__text {
+    color: #fff;
+}
+.van-nav-bar__title {
+    font-weight: 800;
+    color: #fff;
+    font-size: 18px;
 }
 </style>

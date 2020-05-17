@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <el-table class="table-content" :data="taskList" border stripe height="550" style="width: 100%">
+        <el-table class="table-content" :data="taskList" border stripe height="100%" style="width: 100%">
             <el-table-column fixed prop="cargoKind" label="货物种类" width="200">
             </el-table-column>
             <el-table-column prop="cargoWeight" label="货物重量" width="200">

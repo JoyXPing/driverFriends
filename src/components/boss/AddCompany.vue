@@ -32,7 +32,7 @@
                                 :area-list="areaList"
                                 :columns-num="2"
                                 @confirm="onConfirm"
-                                @cancel="show = false"
+                                @cancel="showPicker = false"
                             />
                         </van-popup>
                         <van-field
