@@ -110,7 +110,7 @@
                     </van-form>
                 </van-collapse-item>
             </van-collapse>
-            <van-button round type="danger" class="bottom-button" @click="addTask">
+            <van-button round type="danger" class="bottom-button list-add" @click="addTask">
                 添加任务
             </van-button>
         </div>
@@ -316,6 +316,9 @@ export default {
 .i-btn-r {
     width: 6rem;
     border-radius: 0 2rem 2rem 0;
+}
+.list-add {
+    margin: 1rem 0;
 }
 </style>
 <style>

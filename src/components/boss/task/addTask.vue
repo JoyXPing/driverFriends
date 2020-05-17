@@ -154,12 +154,12 @@ import adress from '@/utils/areaList.js'
     align-items: center;
     justify-content: center;
     height: 100%;
-  }
+}
 
-  .block {
+.block {
     width: 80%;
     background-color: #fff;
     border-radius: 20px;
     padding: 15px;
-  }
+}
 </style>

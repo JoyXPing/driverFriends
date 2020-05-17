@@ -15,12 +15,12 @@
 
 <style scoped>
 .content {
-    margin: 6rem 1rem;
+    /* margin: 6rem 1rem; */
 }
 </style>
 <style>
 .van-nav-bar {
-    background-color: rgba(0,0,0,0); 
+    background-color: rgba(0,0,0,0.1); 
 }
 .van-nav-bar .van-icon {
     color: #fff;

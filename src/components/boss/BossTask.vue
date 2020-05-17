@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="task">
         <get-task-list />
         <router-view />
     </div>
@@ -14,6 +14,8 @@ import getTaskList from '@/components/boss/task/getTaskList.vue';
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.task {
+    margin: 6rem 1rem;
+}
 </style>
