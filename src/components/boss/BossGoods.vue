@@ -1,15 +1,20 @@
 <template>
-    <div>
-        BossGoods
+    <div class="goods">
+        <get-goods-list />
     </div>
 </template>
 
 <script>
-    export default {
-        
+import getGoodsList from '@/components/boss/goods/getGoodsList.vue';
+export default {
+    components: {
+        getGoodsList
     }
+}
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.goods {
+    margin: 5rem 1rem;
+}
 </style>

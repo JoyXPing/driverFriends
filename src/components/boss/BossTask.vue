@@ -16,6 +16,6 @@ import getTaskList from '@/components/boss/task/getTaskList.vue';
 
 <style scoped>
 .task {
-    margin: 6rem 1rem;
+    margin: 5rem 1rem;
 }
 </style>

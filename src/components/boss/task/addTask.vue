@@ -71,11 +71,14 @@
                             label="备注"
                             placeholder="备注"
                         />
-                        <div style="margin: 16px;">
-                            <van-button round block type="info" native-type="submit">
-                            提交
+                        <van-cell class="item-btn">
+                            <van-button plain type="primary" class="i-btn-l" native-type="submit">
+                                提交
                             </van-button>
-                        </div>
+                            <van-button plain type="info" class="i-btn-r" @click="cancel">
+                                取消
+                            </van-button>
+                        </van-cell>
                     </van-form>
                 </div>
             </div>
@@ -127,9 +130,13 @@ import adress from '@/utils/areaList.js'
                     headers: { Token: getToken("Token") }
                 }).then(res => {
                     if(res.data.code === 0) {
-                        this.$router.push({path: '/main/Boss/Task', query: {data: params}})
+                        this.$router.push('/main/Boss/Task')
                     }
                 })
+            },
+            cancel() {
+                this.show = false
+                this.$router.push('/main/Boss/Task')
             },
             formatTime(value) {
                 var year = value.getFullYear();
@@ -161,5 +168,13 @@ import adress from '@/utils/areaList.js'
     background-color: #fff;
     border-radius: 20px;
     padding: 15px;
+}
+.i-btn-l {
+    width: 6rem;
+    border-radius: 2rem 0 0 2rem;
+}
+.i-btn-r {
+    width: 6rem;
+    border-radius: 0 2rem 2rem 0;
 }
 </style>

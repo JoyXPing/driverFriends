@@ -96,11 +96,43 @@ Vue.use(VueRouter)
       },
       {
         path: "/main/Buyer",
-        component: () => import("@/components/main/TheBuyer.vue")
+        component: () => import("@/components/main/TheBuyer.vue"),
+        children: [
+          {
+            path: "/main/Buyer/home",
+            component: () => import("@/components/buyer/BuyerHome.vue")
+          },
+          {
+            path: "/main/Buyer/demand",
+            component: () => import("@/components/buyer/BuyerDemand.vue")
+          },
+          {
+            path: "/main/Buyer/center",
+            component: () => import("@/components/buyer/BuyerCenter.vue")
+          }
+        ]
       },
       {
         path: "/main/Driver",
-        component: () => import("@/components/main/TheDriver.vue")
+        component: () => import("@/components/main/TheDriver.vue"),
+        children: [
+          {
+            path: "/main/Driver/home",
+            component: () => import("@/components/driver/DriverHome.vue")
+          },
+          {
+            path: "/main/Driver/demand",
+            component: () => import("@/components/driver/DriverDemand.vue")
+          },
+          {
+            path: "/main/Driver/task",
+            component: () => import("@/components/driver/DriverTask.vue")
+          },
+          {
+            path: "/main/Driver/center",
+            component: () => import("@/components/driver/DriverCenter.vue")
+          }
+        ]
       }
     ]
   }

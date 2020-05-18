@@ -2,52 +2,43 @@
     <div class="home">
         <div class="count-info">
             <van-button color="linear-gradient(to left, #4bb0ff, #6149f6)">
-                <div class="btn-text">已发布任务</div>
-                <div class="btn-text">{{viewInfo.sumIssuedTasks}}</div>
+                <div class="btn-text">已接收任务</div>
+                <div class="btn-text">{{viewInfo.sumGetTask}}</div>
             </van-button>
             <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)">
-                <div class="btn-text">已发布商品</div>
-                <div class="btn-text">{{viewInfo.sumIssuedGoods}}</div>
+                <div class="btn-text">已发布需求</div>
+                <div class="btn-text">{{viewInfo.sumIssueDemand}}</div>
             </van-button>
         </div>
         <div class="home-info">
             <div class="home-info-title">
-                公司信息
+                卡车信息
             </div>
             <van-cell-group>
-                <van-cell :border="false" title="公司名称" :value="viewInfo.companyName" />
-                <van-cell :border="false" title="公司电话" :value="viewInfo.companyMobile" />
-                <van-cell :border="false" title="公司所在城市" :value="viewInfo.companyCity" />
-                <van-cell :border="false" title="公司详细地址" :value="viewInfo.companyAddress" />
+                <van-cell :border="false" title="车牌号码" :value="viewInfo.truck.truckNumber" />
+                <van-cell :border="false" title="司机姓名" :value="viewInfo.truck.truckOwnerName" />
+                <van-cell :border="false" title="最大承载量(t)" :value="viewInfo.truck.maxLaden" />
             </van-cell-group>
         </div>
         <div class="need-info">
             <div class="home-info-title">
-                需求信息
+                正在进行的任务详情
             </div>
-            <div v-if="viewInfo.demand != ''">
+            <div v-if="viewInfo.task != ''">
                 <van-collapse 
                     v-model="activeName" 
                     accordion 
-                    v-for="(item,index) in viewInfo.demand" 
-                    :key="item.demandId"
-                    @change="itemInfo(item,index)"
+                    v-for="(item,index) in viewInfo.task" 
+                    :key="item.taskId"
                 >
-                    <van-collapse-item :title="item.demandName" :value="taskState(item)" :name="index" >
-                        <template #title>
-                            <div>
-                                {{item.demandName}} 
-                                <van-tag mark type="success" v-if="item.issueType === 'Driver'">司机</van-tag>
-                                <van-tag mark type="warning" v-else-if="item.issueType === 'Buyer'">买家</van-tag>
-                            </div>
-                        </template>
+                    <van-collapse-item :title="item.cargoKind" :value="taskState(item)" :name="index" >
                         <van-cell-group>
-                            <van-cell title="发布人姓名" :value="itemDetail.issueName" />
-                            <van-cell title="发布人手机号" :value="itemDetail.issueMobile" />
-                            <van-cell title="需求名称" :value="itemDetail.demandName" />
-                            <van-cell title="需求重量(t)" :value="itemDetail.demandWeight" />
-                            <van-cell title="需求始发地" :value="itemDetail.demandStart" />
-                            <van-cell title="需求目的地" :value="itemDetail.demandDestination" />
+                            <van-cell title="商品名称" :value="item.cargoKind" />
+                            <van-cell title="商品重量(t)" :value="item.cargoWeight" />
+                            <van-cell title="商品所在城市" :value="item.destinationCity" />
+                            <van-cell title="商品详细地址" :value="item.destinationAddress" />
+                            <van-cell title="截止时间" :value="item.taskDeadline" />
+                            <van-cell title="备注" :value="item.remark" />
                         </van-cell-group>
                     </van-collapse-item>
                 </van-collapse>
@@ -72,7 +63,7 @@ export default {
         }
     },
     mounted() {
-        axios.post('/boss/overview',qs.stringify(),{
+        axios.post('/driver/overview',qs.stringify(),{
             headers: { Token: getToken("Token") }
         }).then(res => {
             if(res.data.code === 0) {
@@ -96,18 +87,18 @@ export default {
                 return "已删除";
             }
         },
-        itemInfo(item) {
-            let params = {
-                demandId : item.demandId
-            }
-            axios.post('/task/demand/detail',qs.stringify(params),{
-                headers: { Token: getToken("Token") }
-            }).then(res => {
-                if(res.data.code === 0) {
-                    this.itemDetail = res.data.data;
-                }
-            })
-        }
+        // itemInfo(item) {
+        //     let params = {
+        //         demandId : item.demandId
+        //     }
+        //     axios.post('/task/demand/detail',qs.stringify(params),{
+        //         headers: { Token: getToken("Token") }
+        //     }).then(res => {
+        //         if(res.data.code === 0) {
+        //             this.itemDetail = res.data.data;
+        //         }
+        //     })
+        // }
     }
 }
 </script>
