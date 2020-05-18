@@ -16,12 +16,12 @@
                         <van-cell title="截止时间" :value="itemDetail.taskDeadline" />
                         <van-cell title="备注" :value="itemDetail.remark" />
                         <div style="margin: 16px;" v-if="item.taskState === 'Wait'">
-                            <van-button round block type="info" @click="gotTask">
+                            <van-button round block type="info" @click="gotTask(item)">
                             接收任务
                             </van-button>
                         </div>
                         <div style="margin: 16px;" v-if="item.taskState === 'Got'">
-                            <van-button round block type="info" @click="gotgoods">
+                            <van-button round block type="info" @click="gotgoods(item)">
                             已收货
                             </van-button>
                         </div>
@@ -88,7 +88,7 @@ export default {
                 })
             }
         },
-        gotTask() {
+        gotTask(item) {
             let params = {
                 taskId : this.itemDetail.taskId
             }
@@ -96,13 +96,14 @@ export default {
                     headers: { Token: getToken("Token") }
                 }).then(res => {
                     if(res.data.code === 0) {
+                        item.taskState = 'Got';
                         Notify({ type: 'success', message: '领取任务成功' });
                     }else {
                         Notify({ type: 'danger', message: res.data.msg });
                     }
                 })
         },
-        gotgoods() {
+        gotgoods(item) {
             let params = {
                 taskId : this.itemDetail.taskId
             }
@@ -110,6 +111,7 @@ export default {
                     headers: { Token: getToken("Token") }
                 }).then(res => {
                     if(res.data.code === 0) {
+                        item.taskState = 'Transiting';
                         Notify({ type: 'success', message: '已收货' });
                     }else {
                         Notify({ type: 'danger', message: res.data.msg });

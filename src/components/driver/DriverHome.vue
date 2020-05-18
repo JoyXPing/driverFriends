@@ -15,9 +15,9 @@
                 卡车信息
             </div>
             <van-cell-group>
-                <van-cell :border="false" title="车牌号码" :value="viewInfo.truck.truckNumber" />
-                <van-cell :border="false" title="司机姓名" :value="viewInfo.truck.truckOwnerName" />
-                <van-cell :border="false" title="最大承载量(t)" :value="viewInfo.truck.maxLaden" />
+                <van-cell :border="false" title="车牌号码" :value="truck.truckNumber" />
+                <van-cell :border="false" title="司机姓名" :value="truck.truckOwnerName" />
+                <van-cell :border="false" title="最大承载量(t)" :value="truck.maxLaden" />
             </van-cell-group>
         </div>
         <div class="need-info">
@@ -58,6 +58,7 @@ export default {
     data() {
         return {
             viewInfo: '',
+            truck: '',
             itemDetail: '',
             activeName: ''
         }
@@ -68,6 +69,7 @@ export default {
         }).then(res => {
             if(res.data.code === 0) {
                 this.viewInfo = res.data.data;
+                this.truck = this.viewInfo.truck;
             }
         })
     },
@@ -86,19 +88,7 @@ export default {
             }else if (item.demandState == "Del") {
                 return "已删除";
             }
-        },
-        // itemInfo(item) {
-        //     let params = {
-        //         demandId : item.demandId
-        //     }
-        //     axios.post('/task/demand/detail',qs.stringify(params),{
-        //         headers: { Token: getToken("Token") }
-        //     }).then(res => {
-        //         if(res.data.code === 0) {
-        //             this.itemDetail = res.data.data;
-        //         }
-        //     })
-        // }
+        }
     }
 }
 </script>

@@ -9,6 +9,9 @@
         />
         <van-cell title="修改密码" @click="changePassword"/>
     </div>
+    <div class="login-out">
+        <van-cell title="退出登录" @click="loginOut"/>
+    </div>
     <van-overlay :show="ischange">
         <div class="wrapper" @click.stop>
             <div class="block" >
@@ -54,7 +57,7 @@
 <script>
 import axios from "axios";
 import qs from "qs"
-import { getToken  } from "@/utils/index.js";
+import { getToken, removeToken, removeLocalStorage  } from "@/utils/index.js";
 import { Notify } from 'vant';
     export default {
         data() {
@@ -107,6 +110,20 @@ import { Notify } from 'vant';
             },
             cancel() {
                 this.ischange = false
+            },
+            loginOut() {
+                axios.post('/logout',qs.stringify(),{
+                    headers: { Token: getToken("Token") }
+                }).then(res => {
+                    if(res.data.code === 0) {
+                        removeToken('Token');
+                        removeLocalStorage('mobileAndPassword');
+                        Notify({ type: 'success', message: '退出成功' });
+                        this.$router.push('/user/login')
+                    }else {
+                        Notify({ type: 'danger', message: res.data.msg });
+                    }
+                })
             }
         }
     }
@@ -143,6 +160,12 @@ import { Notify } from 'vant';
 .i-btn-r {
     width: 6rem;
     border-radius: 0 2rem 2rem 0;
+}
+.login-out {
+    margin: 0 1rem;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 3px;
 }
 </style>
 <style>

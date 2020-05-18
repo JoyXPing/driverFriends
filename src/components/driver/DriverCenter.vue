@@ -57,7 +57,7 @@
 <script>
 import axios from "axios";
 import qs from "qs"
-import { getToken  } from "@/utils/index.js";
+import { getToken, removeToken, removeLocalStorage  } from "@/utils/index.js";
 import { Notify } from 'vant';
     export default {
         data() {
@@ -116,6 +116,8 @@ import { Notify } from 'vant';
                     headers: { Token: getToken("Token") }
                 }).then(res => {
                     if(res.data.code === 0) {
+                        removeToken('Token');
+                        removeLocalStorage('mobileAndPassword');
                         Notify({ type: 'success', message: '退出成功' });
                         this.$router.push('/user/login')
                     }else {
